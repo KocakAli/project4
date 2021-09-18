@@ -1,0 +1,56 @@
+.form-control{
+    resize: none;
+    display: block;
+}
+.input-group{
+    padding: 0px 25px 25px
+}
+.post{
+    border: 1px solid lightgrey;
+}
+
+.p_time{
+    font-size: 14px;
+    color:grey
+}
+.p_like{
+    font-size: 15px;
+}
+
+.p_user{
+    cursor:pointer;
+}
+
+.fa-heart{
+    color:red;
+    cursor: pointer;
+    margin-right:5px
+}
+
+.post-con{
+    padding: 25px 25px 0px 25px;
+    font-size: 18px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.loader {
+    border: 8px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 8px solid rgb(81, 81, 199);
+    width: 45px;
+    height: 45px;
+    -webkit-animation: spin 2s linear infinite; /* Safari */
+    animation: spin 2s linear infinite;
+  }
+  
+  /* Safari */
+  @-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
