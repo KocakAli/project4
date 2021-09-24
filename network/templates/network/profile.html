@@ -2,19 +2,19 @@
 
 {% block head%}  
 
-<script type='text/babel'>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
-
-let context = {
+<script type='text/babel'> 
+    
+    
+function App(){
+    let context = {
         name: '{{name}}',
         user:'{{user}}'
-    };
-
-function App(){
+    }; 
     const[name,setName] = React.useState(context.name)
     const[user,setUser] =React.useState(context.user)
     const[a,setA] = React.useState(null)
     
-
+    
     return(   
         <div>
             <Head name={context.name} setA={setA} a={a} user={user}/> 
@@ -23,11 +23,11 @@ function App(){
         </div>
         
     )
-
-}
-
-function Head(props){
-
+    
+    }
+    
+    function Head(props){
+    
     function follow(){
         fetch('/follow',{
             method:'POST',
@@ -37,7 +37,7 @@ function Head(props){
         })
         props.setA(!props.a)
     }
-
+    
     return(
         <div>
             <div className='row mt-3 '>
@@ -55,12 +55,12 @@ function Head(props){
             
         </div>
     )
-}
-function Followers(props){
+    }
+    function Followers(props){
     const [fs, setFs] = React.useState(null)
     const [fg, setFg] = React.useState(null)
     
-
+    
      React.useEffect(() => {
         setTimeout(()=>{
             fetch('/pf/'+ props.name)
@@ -72,12 +72,12 @@ function Followers(props){
                 })  
             },100)       
     },[props.a]) 
-
-
-
     
- 
-
+    
+    
+    
+    
+    
     return(
         <div>
             <div className='container post mt-5'>
@@ -100,9 +100,9 @@ function Followers(props){
                 </div>
         </div>
     )
-}
-
-function LoadPosts(props){
+    }
+    
+    function LoadPosts(props){
         const[posts,setPosts] = React.useState(null)
         const[s_edit, setEdit] = React.useState(null)
         const[edit_id,setId] =React.useState(null)
@@ -110,11 +110,11 @@ function LoadPosts(props){
         const[username,setU] = React.useState(null)
         const[pageNum,setPageNum] = React.useState(1)
         const[maxPage,setMaxPage] = React.useState(null)
-
+    
         function updateEditText(event){
             setText(event.target.value)
         }
-
+    
         function like(id){
             console.log(id)
             fetch('/like',{
@@ -125,7 +125,7 @@ function LoadPosts(props){
             })
             props.setA(!props.a)
         }
-
+    
          function save(id,text){
             fetch('/edit',{
                 method:'POST',
@@ -138,7 +138,7 @@ function LoadPosts(props){
             setText('Edit your post here')
         } 
         
-
+    
         React.useEffect(()=>{
             setTimeout(()=>{
                 fetch('/p/' +props.name+ '/' + pageNum)
@@ -151,7 +151,7 @@ function LoadPosts(props){
                 });
             },100)
         },[props.a,s_edit,pageNum])
-
+    
         function next(){
             if(pageNum >= maxPage){
                 alert('You are looking last page')
@@ -170,9 +170,9 @@ function LoadPosts(props){
             }
             
         }
-
+    
         function edit(id){    
-
+    
             setEdit(!s_edit)
             setId(id)
         }
@@ -193,7 +193,7 @@ function LoadPosts(props){
             </div>
         )
     }
-
+    
     function Post(props){
         function profile(user){
             window.location = `http://127.0.0.1:8000/profile/${user}`
@@ -203,7 +203,7 @@ function LoadPosts(props){
                 <h5 onClick={()=>profile(props.user)} className='mt-3 p_user' >{props.user}</h5> 
                 <p className='p_time lead'>{props.p_time}</p>          
                 <p className='Lead'>{props.txt}</p>
-
+    
                 <div className='mb-2 mt-4'>
                     <div className='d-flex justify-content-between'>
                         <div className='d-flex '>
@@ -217,7 +217,7 @@ function LoadPosts(props){
             </div>
         ) 
     }
-
+    
     function Pages(props){
         let style ={
             'marginRight':'15px',
@@ -230,17 +230,16 @@ function LoadPosts(props){
             </div>
         )
     }
-
-
-
-
-ReactDOM.render(
+    
+    
+    
+    
+    ReactDOM.render(
     <App />,
     document.querySelector('#root')
-
-
-)
-
+    
+    
+    )
 </script>
 
 {% endblock %}

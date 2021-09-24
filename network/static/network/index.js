@@ -192,4 +192,4 @@
         <App />,
         document.getElementById('post')
     )
-    </script>
+
